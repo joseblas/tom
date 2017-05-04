@@ -1,7 +1,7 @@
 
+def hello_world():
+    return "Hola Mundo"
 
-def helloWorld():
-    print('Hola Mundo')
 
-def sayHello(name):
+def say_hello(name):
     return "Hello " + name
