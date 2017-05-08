@@ -2,6 +2,11 @@ from __future__ import unicode_literals, print_function
 
 from spacy.en import English
 import sys
+import codecs
+
+
+def extract_entities_from_file(path):
+    return extract_entities(read_file(path))
 
 
 def extract_entities(text):
@@ -21,5 +26,20 @@ def debug(ents):
         # print(entity.text, entity.label_, [w.tag_ for w in entity])
 
 
+def read_file(path):
+    print('reading file ', path)
+    file_content = codecs.open(path, "r", "utf-8")
+    content = file_content.read()
+    file_content.close()
+    # print(content)
+    return content
+
+
 if __name__ == '__main__':
-    print(extract_entities(sys.argv[1]))
+    # print(len(sys.argv))
+    # print(sys.argv)
+    if sys.argv[1] == '-f':
+        file = sys.argv[2]
+        print(extract_entities(read_file(file)))
+    else:
+        print(extract_entities(sys.argv[1]))

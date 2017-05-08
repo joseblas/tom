@@ -31,6 +31,11 @@ class TestStringMethods(unittest.TestCase):
                  u"chairmanship of the Select Committee that considered the petitions against the Bill in the Lords, " \
                  u"and to thank the other members of the Committee."
         ents = entity_extractor.extract_entities(sample)
+        # print("\n\ntext:", sample)
+        # print("\nOutcome:")
+        # for member in ents:
+        #     print( member[0])
+        # print("\n\n")
         self.assertEqual(len(ents), 7, " Should be one person")
 
     def test_contains_many_people_and_other_entities_and_cyrillic_entities(self):
