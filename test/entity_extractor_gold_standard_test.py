@@ -5,7 +5,7 @@ import codecs
 
 class EntityExtractorGoldStandard(unittest.TestCase):
     def test_gold_standard_measure(self):
-        ents = entity_extractor.extract_entities_from_file("./test/Lee Valley Regional Park (Amendment) 2017-02-22.txt")
+        ents = entity_extractor.extract_entities_from_file("Lee Valley Regional Park (Amendment) 2017-02-22.txt")
         entities = list(map(to_text, list(set(ents))))
         with codecs.open("./test/gold_standard_leevalley.csv", "r", "utf-8") as f:
             mp = list(map(lambda line: line.strip() in entities, f))

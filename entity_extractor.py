@@ -17,13 +17,7 @@ def extract_entities(text):
 
 
 def to_entity(entity):
-    return entity.text, entity.label_
-
-
-def debug(ents):
-    for entity in ents:
-        print(entity)
-        # print(entity.text, entity.label_, [w.tag_ for w in entity])
+    return entity.text.strip(), entity.label_
 
 
 def read_file(path):
