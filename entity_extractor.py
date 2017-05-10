@@ -21,7 +21,7 @@ def to_entity(entity):
 
 
 def read_file(path):
-    print('reading file ', path)
+    # print('reading file ', path)
     file_content = codecs.open(path, "r", "utf-8")
     content = file_content.read()
     file_content.close()
