@@ -17,7 +17,7 @@ class TestStringMethods(unittest.TestCase):
         sample = u"It would be most remiss of me not also to thank Lord Walker of Gestingthorpe for his distinguished " \
                  u"chairmanship of the Select Committee that considered the petitions against the Bill in the Lords, "
         ents = entity_extractor.extract_entities(sample)
-        self.assertEqual(len(ents), 2, " Should be one person")
+        self.assertEqual(len(ents), 4, " Should be four entities")
 
     def test_contains_many_people_and_other_entities(self):
         sample = u"Let me say right away that the majority of the amendments are technical clarifications, " \
@@ -32,11 +32,11 @@ class TestStringMethods(unittest.TestCase):
                  u"and to thank the other members of the Committee."
         ents = entity_extractor.extract_entities(sample)
         # print("\n\ntext:", sample)
-        # print("\nOutcome:")
-        # for member in ents:
-        #     print( member[0])
+        print("\nOutcome:")
+        for member in ents:
+            print( member[0], member[1])
         # print("\n\n")
-        self.assertEqual(len(ents), 7, " Should be one person")
+        self.assertEqual(len(ents), 17)
 
     def test_contains_many_people_and_other_entities_and_cyrillic_entities(self):
         sample = u"Let me say right away that the majority of the amendments are technical clarifications, " \
@@ -52,7 +52,7 @@ class TestStringMethods(unittest.TestCase):
                  u"Поздрави, Камен."
         # 'Best Regards, Kamen' in Bulgarian
         ents = entity_extractor.extract_entities(sample)
-        self.assertEqual(len(ents), 7, " Should be one person")
+        self.assertEqual(len(ents), 18)
 
 
 if __name__ == '__main__':

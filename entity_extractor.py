@@ -12,7 +12,7 @@ def extract_entities_from_file(path):
 def extract_entities(text):
     nlp = English()
     entities = nlp(text).ents
-    ents = [ents for ents in entities if ents.label_ in ["PERSON"]]
+    ents = [ents for ents in entities if ents.label_ in ["PERSON", "ORG", "LOC", "EVENT"]]
     return list(map(to_entity, ents))
 
 
@@ -31,7 +31,7 @@ def read_file(path):
 
 if __name__ == '__main__':
     # print(len(sys.argv))
-    # print(sys.argv)
+    print(sys.argv)
     if sys.argv[1] == '-f':
         file = sys.argv[2]
         print(extract_entities(read_file(file)))
