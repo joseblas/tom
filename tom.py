@@ -14,7 +14,7 @@ if __name__ == '__main__':
         values = list(map(to_list, entities))
         z = Counter(values)
         for e in z:
-            print(e[0].strip(),",", e[1].strip(),",",z.get(e))
+            print("".join(e[0].splitlines()).strip(),",", e[1].strip(),",",z.get(e))
     else:
         entities = entity_extractor.extract_entities_from_file(sys.argv[2])
         values = list(map(to_list, entities))
