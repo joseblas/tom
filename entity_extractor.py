@@ -4,7 +4,6 @@ from spacy.en import English
 import sys
 import codecs
 
-
 def extract_entities_from_file(path):
     return extract_entities(read_file(path))
 
@@ -21,16 +20,13 @@ def to_entity(entity):
 
 
 def read_file(path):
-    # print('reading file ', path)
     file_content = codecs.open(path, "r", "utf-8")
     content = file_content.read()
     file_content.close()
-    # print(content)
     return content
 
 
 if __name__ == '__main__':
-    # print(len(sys.argv))
     print(sys.argv)
     if sys.argv[1] == '-f':
         file = sys.argv[2]

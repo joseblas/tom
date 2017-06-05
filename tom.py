@@ -18,7 +18,7 @@ if __name__ == '__main__':
     else:
         entities = entity_extractor.extract_entities_from_file(sys.argv[2])
         values = list(map(to_list, entities))
-        # print(entities)
-        # print("v ", values)
+        print(entities)
+        print("v ", values)
         for e in values:
             print(e)

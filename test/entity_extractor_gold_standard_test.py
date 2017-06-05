@@ -11,9 +11,26 @@ class EntityExtractorGoldStandard(unittest.TestCase):
             mp = list(map(lambda line: line.strip() in entities, f))
         precision = len(list(filter(lambda data: data == True, mp))) / len(mp)
         recall = len(list(filter(lambda data: data == True, mp))) / len(entities)
-        print("Precision: ", precision, len(list(filter(lambda data: data == True, mp))) , len(mp))
-        print("recall: ", recall, len(list(filter(lambda data: data == True, mp))) , len(entities))
-        print("Balanced F1: ", (2 * precision * recall)/(precision+recall))
+        print("Precision: ", precision, len(list(filter(lambda data: data == True, mp))), len(mp))
+        print("recall: ", recall, len(list(filter(lambda data: data == True, mp))), len(entities))
+        print("Balanced F1: ", (2 * precision * recall) / (precision + recall))
+
+    def test_muc1_gold_standard_measure(self):
+        ents = entity_extractor.extract_entities_from_file("/Users/jta/Downloads/muc3_all.txt")
+        entities = list(map(to_text, list(set(ents))))
+
+        # print("entities ", ents)
+        # print("entities ", len(ents[3]))
+        # print("entities ", entities)
+
+        with codecs.open("/Users/jta/Downloads/name-person_utf8.txt", "r") as f:
+            mp = list(map(lambda line: line.strip() in entities, f))
+        print("mp ", mp)
+        precision = len(list(filter(lambda data: data == True, mp))) / len(mp)
+        recall = len(list(filter(lambda data: data == True, mp))) / len(entities)
+        print("Precision: ", precision, len(list(filter(lambda data: data == True, mp))), len(mp))
+        print("recall: ", recall, len(list(filter(lambda data: data == True, mp))), len(entities))
+        print("Balanced F1: ", (2 * precision * recall) / (precision + recall))
 
 
 def to_text(entity):
